@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #f8f9fa;
+        }
+        .accordion {
+            border: none; /* Removed any border around the accordion container */
+            box-shadow: none; /* Removed box-shadow */
+        }
+        .accordion-item {
+            border: none; /* No border around each accordion item */
+            margin-bottom: 10px; /* Space between items */
+            border-radius: 8px; /* Rounded corners for items */
+        }
+        .accordion-button {
+            background-color: #343a40;
+            color: #f8f9fa;
+            font-weight: bold;
+            border: none; /* Removed border from button */
+            padding: 15px;
+            text-align: left;
+            width: 100%;
+            box-shadow: none; /* Removed shadow */
+            border-radius: 8px; /* Rounded corners */
+        }
+        .accordion-button:hover,
+        .accordion-button:focus {
+            background-color: #ffc107;
+            color: #121212;
+        }
+        .accordion-button.active {
+            background-color: #ffc107;
+            color: #121212;
+        }
+        .accordion-body {
+            background-color: #212529;
+            color: #ffc107; /* Answer text in yellow */
+            padding: 15px;
+            border-radius: 8px;
+            border: none; /* Removed border */
+            margin-top: 10px; /* Space after the header */
+        }
+        h1 {
+            color: #ffc107;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        #scrollTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: #ffc107;
+            color: #121212;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        #scrollTop:hover {
+            background-color: #e6a307;
+        }
+        #searchBar {
+            margin-bottom: 30px;
+            background-color: #212529;
+            color: #ffc107;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+        }
+        #searchBar::placeholder {
+            color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="searchSuggestions" style="background-color: #343a40; color: #ffc107; padding: 10px; border-radius: 8px; margin-top: 10px;"></div>
+    <div class="mb-4">
+    <input type="text" id="newQuestion" class="form-control" placeholder="Enter new FAQ question">
+    <textarea id="newAnswer" class="form-control mt-2" placeholder="Enter new FAQ answer"></textarea>
+    <button id="addFaqButton" class="btn btn-warning mt-3">Add FAQ</button>
+</div>
+
+
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Frequently Asked Questions</h1>
+
+        <!-- Search Bar -->
+        <input type="text" id="searchBar" class="form-control" placeholder="Search FAQs...">
+
+        <!-- Accordion -->
+        <div class="accordion" id="faqAccordion">
+            <!-- 10 FAQ Items -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                        What are the dining hours?
+                    </button>
+                </h2>
+                <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Our dining hours are from 8:00 AM to 10:00 PM, Monday to Sunday.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                        Do you accommodate dietary restrictions?
+                    </button>
+                </h2>
+                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, we accommodate various dietary restrictions. Please inform our staff in advance.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                        Can I make a reservation?
+                    </button>
+                </h2>
+                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, reservations can be made online or by calling our customer service desk.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading4">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                        Are pets allowed in the dining area?
+                    </button>
+                </h2>
+                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Pets are not allowed in the dining area, except for service animals.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading5">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                        Do you offer takeout or delivery options?
+                    </button>
+                </h2>
+                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, we offer both takeout and delivery options. Check our website for details.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading6">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                        Can I host a private event or party?
+                    </button>
+                </h2>
+                <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, private event bookings can be made by contacting our events team.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading7">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                        Is there a dress code?
+                    </button>
+                </h2>
+                <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        There is no strict dress code, but casual and business attire are recommended.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading8">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                        Do you have gift cards?
+                    </button>
+                </h2>
+                <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, gift cards are available for purchase online and at our locations.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading9">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                        Are there parking facilities available?
+                    </button>
+                </h2>
+                <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, we provide free parking for all our customers.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading10">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                        Do you have a kids’ menu?
+                    </button>
+                </h2>
+                <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes, our kids’ menu offers a variety of child-friendly dishes.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop">↑</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+
+$(document).ready(function () {
+    // Fetch FAQ data from the server
+    // data parameter contains the parsed JSON response (an array of FAQ objects
+    $.getJSON("fetch_faqs.php", function (data) {
+        let faqHTML = ''; //A variable to build the HTML structure for the FAQs
+        data.forEach((faq, index) => {
+            faqHTML += `
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading${index}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="false" aria-controls="collapse${index}">
+                            ${faq.question}
+                        </button>
+                    </h2>
+                    <div id="collapse${index}" class="accordion-collapse collapse" aria-labelledby="heading${index}" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ${faq.answer}
+                            <button class="btn btn-sm btn-outline-success mt-2 helpful-button" data-id="${index}">Helpful</button>
+                        </div>
+                    </div>
+                </div>`;
+        });
+        $('#faqAccordion').html(faqHTML);//Selects the accordion container & Replaces the content of this container"
+    });
+
+    // Search Functionality
+    //This sets up an event listener likely an input field
+    $('#searchBar').on('keyup', function () {
+    const query = $(this).val();
+    if (query.length > 2) {
+        $.getJSON(`search_faqs.php?query=${query}`, function (data) {
+            let suggestions = '';
+            data.forEach((faq) => {
+                suggestions += `<p>${faq.question}</p>`;
+            });
+            $('#searchSuggestions').html(suggestions);
+        });
+    } else {
+        $('#searchSuggestions').html(''); //if user input> 2, it proceeds to search the FAQs. Otherwise, it clears any suggestions.
+    }
+});
+
+
+    // Scroll to Top Button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 200) {
+            $('#scrollTop').fadeIn();
+        } 
+        
+        else {
+            $('#scrollTop').fadeOut();
+        }
+    });
+    
+
+    $('#scrollTop').click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+        return false;
+    });
+
+    // Feedback Mechanism
+    $(document).on('click', '.helpful-button', function () {
+        const faqId = $(this).data('id');
+        alert(`Thank you for your feedback on FAQ #${faqId + 1}!`);
+        // Optionally, send this feedback to the server
+        // $.post('feedback_handler.php', { faqId: faqId });
+
+        // Send feedback to the server using POST request
+    $.post('feedback_handler.php', { faqId: faqId }, function(response) {
+        console.log(response); // Log the response from the server
+    });
+});
+
+
+$('#addFaqButton').click(function () {
+    const newFaq = {
+        question: $('#newQuestion').val(),
+        answer: $('#newAnswer').val()
+    };
+
+    $.ajax({
+        url: 'add_faq.php',
+        type: 'POST',
+        data: JSON.stringify(newFaq),
+        contentType: 'application/json',
+        success: function (response) {
+            alert(response.message);
+            location.reload(); // Reload the FAQs
+        }
+    });
+});
+});
+ // 3. Search FAQs (Working without a search button)
+ $('#searchBar').on('keyup', function () {
+               var value = $(this).val().toLowerCase();
+               $('.accordion-item').filter(function () {
+               $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+               });
+             });
+
+
+    </script>
+</body>
+</html>
